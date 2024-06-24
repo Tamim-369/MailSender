@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 // Middleware to parse JSON
 app.use(express.json());
 app.use(cors());
-app.get("/api/sendmail", (req, res) => {
+app.post("/api/sendmail", (req, res) => {
   const { name, from, message } = req.body;
 
   // Check if all required fields are provided

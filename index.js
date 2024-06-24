@@ -6,7 +6,12 @@ const port = process.env.PORT || 3000;
 
 // Middleware to parse JSON
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST"],
+  })
+);
 app.post("/api/sendmail", (req, res) => {
   const { name, from, message } = req.body;
 
@@ -44,7 +49,7 @@ app.post("/api/sendmail", (req, res) => {
       return res.status(500).send("Error sending email");
     }
     console.log("Message sent: " + info.response);
-    res.status(200).send("Email sent successfully");
+    res.status(200).json({ message: "Email sent successfully", success: true });
   });
 });
 

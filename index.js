@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://tamim369.netlify.app",
+    origin: "*",
     methods: ["GET", "POST"],
   })
 );
